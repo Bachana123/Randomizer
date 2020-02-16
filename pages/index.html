@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Random Game</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/mystyle.css">
+  </head>
+  <body>
+    <div class="container">
+      <span class="text write">Chose Your Game Folder</span>
+      <input type="file" name="file" id="path" class="inputfile" webkitdirectory >
+      <label for="path">Choose a file</label>
+      <span class="text button" onclick="changeHtml()">
+        play your random game
+      </span>
+      <span class="game text">
+        <div id="result" onclick="runGame()"></div>
+      </span>
+    </div>
+  </body>
+</html>
+
+<script>
+  var result, image;
+  function changeHtml() {
+    // const path = "C:\/users\/" + require("os").userInfo().username + "\/Desktop";
+    const allFiles = document.getElementById('path').files
+    const resultHtml = document.getElementById('result')
+
+    if (allFiles) {
+
+        var random = Math.floor(Math.random() * Math.floor(allFiles.length));
+        result = allFiles[random].path;
+
+        //searching image comming soon
+
+        //adding in html
+        resultHtml.innerHTML = result.split('\\').pop().split('.').shift()
+    }
+  }
+  function runGame() {
+    if (result) {
+      require('child_process').exec(`"${result}"`);
+    }
+  }
+</script>
