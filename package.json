@@ -9,7 +9,7 @@
   "author": "Bacho",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^8.0.1",
+    "electron": "^8.2.4",
     "electron-wix-msi": "^2.2.0"
   },
   "dependencies": {
